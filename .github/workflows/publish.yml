@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -23,22 +23,16 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: debug
-        run: ls
-
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
 
       - name: Setup Pages ⚙️
-        uses: actions/configure-pages@v3.0.7
+        uses: actions/configure-pages@v4
         with:
           static_site_generator: next
 
-      - name: debug2
-        run: ls
-
       - name: Build with Next.js 🏗️
-        run: npm run build && ls
+        run: npx next build
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
