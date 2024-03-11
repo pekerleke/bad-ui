@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { Button, ButtonGroup, ButtonToolbar, IconButton } from "rsuite";
+import { Button } from "rsuite";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import classNames from "classnames";
 
 import styles from "./keyless.module.scss";
 import 'rsuite/dist/rsuite.min.css';
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import classNames from "classnames";
+
+
+//TODO: fix metadata and layout config
 
 export default function InputKeyboardLess() {
 
@@ -23,21 +26,30 @@ export default function InputKeyboardLess() {
 
     const handleSubmit = () => {
         setTextValue(prev => prev + keys[keyIndex]);
+        setKeyIndex(0);
+
+        // TODO: countdown
+        // while (keyIndex !== 0) {
+        //     setTimeout(() => {
+        //         setKeyIndex(prev => prev - 1);
+        //     }, 500);
+        // }
     }
 
     const handleReset = () => {
+        setKeyIndex(0);
         setTextValue("");
     }
 
     return (
         <div>
-            <a href="/bad-ui">home</a>
+            <a href="/bad-ui">Home</a>
             <main className={styles.container}>
                 <div style={{ width: 300 }}>
                     <label htmlFor="">Enter your name:</label> <br />
                     <div className={styles.input}>{textValue}</div>
                     <div className={styles.actionContainer}>
-                        <div className={classNames(styles.action, styles.left)} onClick={handlePrevioustKey}><FaChevronLeft /></div>
+                        <div onTouchStart={() => console.log("touchstart")} onMouseDown={() => console.log("mousedown")} className={classNames(styles.action, styles.left)} onClick={handlePrevioustKey}><FaChevronLeft /></div>
                         <div className={styles.display}>{keys[keyIndex]}</div>
                         <div className={classNames(styles.action, styles.rigth)} onClick={handleNextKey}><FaChevronRight /></div>
                     </div>
