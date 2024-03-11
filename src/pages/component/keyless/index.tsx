@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "rsuite";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import classNames from "classnames";
@@ -15,6 +15,8 @@ export default function InputKeyboardLess() {
 
     const [textValue, setTextValue] = useState("");
     const [keyIndex, setKeyIndex] = useState(0);
+
+    const timerId = useRef(null);
 
     const handlePrevioustKey = () => {
         if (keyIndex > 0) setKeyIndex(prev => prev - 1);
@@ -41,6 +43,30 @@ export default function InputKeyboardLess() {
         setTextValue("");
     }
 
+    const startCounter = (func: () => void) => {
+        if (timerId.current === null) {
+            (timerId as any).current = setInterval(() => {
+                func();
+            }, 100);
+        }
+    };
+
+    const stopCounter = () => {
+        if (timerId.current !== null) {
+            clearInterval(timerId.current);
+            timerId.current = null;
+        }
+    };
+
+    const handleNextCounter = () => {
+        startCounter(() => setKeyIndex(prev => prev < keys.length - 1 ? prev + 1 : prev))
+    }
+
+    const handlePreviousCounter = () => {
+        startCounter(() => setKeyIndex(prev => prev > 0 ? prev -1 : prev))
+    }
+
+
     return (
         <div>
             <a href="/bad-ui">Home</a>
@@ -49,9 +75,33 @@ export default function InputKeyboardLess() {
                     <label htmlFor="">Enter your name:</label> <br />
                     <div className={styles.input}>{textValue}</div>
                     <div className={styles.actionContainer}>
-                        <div onTouchStart={() => console.log("touchstart")} onMouseDown={() => console.log("mousedown")} className={classNames(styles.action, styles.left)} onClick={handlePrevioustKey}><FaChevronLeft /></div>
+                        <div
+                            onMouseDown={handlePreviousCounter}
+                            onMouseUp={stopCounter}
+                            onMouseLeave={stopCounter}
+                            onTouchStart={handlePreviousCounter}
+                            onTouchEnd={stopCounter}
+                            className={classNames(styles.action, styles.left)}
+                            onClick={handlePrevioustKey}
+                        >
+                            <FaChevronLeft />
+                        </div>
+
+
+
                         <div className={styles.display}>{keys[keyIndex]}</div>
-                        <div className={classNames(styles.action, styles.rigth)} onClick={handleNextKey}><FaChevronRight /></div>
+
+                        <div
+                            onMouseDown={handleNextCounter}
+                            onMouseUp={stopCounter}
+                            onMouseLeave={stopCounter}
+                            onTouchStart={handleNextCounter}
+                            onTouchEnd={stopCounter}
+                            className={classNames(styles.action, styles.rigth)}
+                            onClick={handleNextKey}
+                        >
+                            <FaChevronRight />
+                        </div>
                     </div>
                     <div className={styles.buttonContainer}>
                         <Button appearance="primary" onClick={handleSubmit}>Enter key</Button>
