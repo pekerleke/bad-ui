@@ -8,8 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Bad UI",
-    description: "nope",
-    // viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    description: "Beautiful bad UI collection",
 };
 
 export default function RootLayout({

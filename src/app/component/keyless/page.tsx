@@ -1,7 +1,7 @@
 'use client'
 
 import classNames from "classnames";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Button } from "rsuite";
 import { Skeleton } from "@/components/skeleton/Skeleton";
@@ -63,7 +63,6 @@ const Keyless = () => {
     const handlePreviousCounter = () => {
         startCounter(() => setKeyIndex(prev => prev > 0 ? prev - 1 : prev))
     }
-
 
     return (
         <div>
