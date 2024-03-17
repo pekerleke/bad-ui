@@ -44,8 +44,8 @@ export default function InputKeyboardLess() {
                                 <div style={{display: "flex", gap: 20}}>
 
                                     <b onClick={() => setBirthdate(checkDate)}>Yes</b>
-                                    <b onClick={() => { setEndDate(checkDate); generateRandomDOB(minDate, checkDate) }}>No, it's earlier</b>
-                                    <b onClick={() => { setMinDate(checkDate); generateRandomDOB(checkDate, endDate) }}>No, it's later</b>
+                                    <b onClick={() => { setEndDate(checkDate); generateRandomDOB(minDate, checkDate) }}>{"No, it's earlier"}</b>
+                                    <b onClick={() => { setMinDate(checkDate); generateRandomDOB(checkDate, endDate) }}>{"No, it's later"}</b>
 
 
                                     {/* <Button onClick={() => setBirthdate(checkDate)} appearance="default">Yes</Button>
