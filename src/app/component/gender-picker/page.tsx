@@ -134,8 +134,8 @@ const GenderPicker = () => {
                     />
 
                     <div className={styles.indicatorContainer}>
-                        <IoMdFemale className={styles.female} style={{ opacity: sliderValue / 100 }} />
-                        <IoMdMale className={styles.male} style={{ opacity: (100 - sliderValue) / 100 }} />
+                        <IoMdMale className={styles.male} style={{ opacity: sliderValue / 100 }} />
+                        <IoMdFemale className={styles.female} style={{ opacity: (100 - sliderValue) / 100 }} />
                     </div>
                 </div>
             </>
