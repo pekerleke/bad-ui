@@ -112,10 +112,10 @@ const GenderPicker = () => {
             97: "Bruv",
             98: "Lad",
             99: "Bloke",
-            100: "Male"
+            100: "Male",
         };
 
-        if (!value) return null;
+        if (!value && value !== 0) return null;
         return femaleToMaleScale[value];
     }
 
