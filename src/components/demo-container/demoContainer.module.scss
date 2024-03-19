@@ -1,0 +1,11 @@
+.container{
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .childrenContainer{
+        width: 100%;
+        max-width: 400px;
+    }
+}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { endOfDay, startOfDay } from "date-fns";
 import dayjs from "dayjs";
-import { Skeleton } from "@/components/skeleton/Skeleton";
+import { DemoContainer } from "@/components/demo-container/DemoContainer";
 
 import styles from "./dateGuesser.module.scss";
 
@@ -21,42 +21,35 @@ export default function DateGuesser() {
         setCheckDate(random.toISOString());
     }
 
-    function getRandomDate(from: Date, to: Date) {
+    const getRandomDate = (from: Date, to: Date) => {
         const fromTime = endOfDay(from).getTime();
         const toTime = startOfDay(to).getTime();
         return startOfDay(new Date(fromTime + Math.random() * (toTime - fromTime)));
     }
 
     return (
-        <div>
-            <main className={styles.container}>
-                <div style={{ width: 300 }}>
-                    <Skeleton>
+        <DemoContainer>
+            <>
+                Birthdate
+                <div className={styles.input} onClick={() => generateRandomDOB(minDate, endDate)}>{birthdate ? dayjs(birthdate).format('DD/MM/YYYY') : "Enter your birthdate"}</div>
+
+                {
+                    checkDate && !birthdate && (
                         <div>
-                            Birthdate
-                            <div className={styles.input} onClick={() => generateRandomDOB(minDate, endDate)}>{birthdate ? dayjs(birthdate).format('DD/MM/YYYY') : "Enter your birthdate"}</div>
+                            Is this your birthdate? <i>{dayjs(checkDate).format('DD MMM YYYY')}</i>
+                            <br /><br />
+                            <div style={{ display: "flex", gap: 20 }}>
 
-                            {
-                                checkDate && !birthdate && (
-                                    <div>
-                                        Is this your birthdate? <i>{dayjs(checkDate).format('DD MMM YYYY')}</i>
-                                        <br /><br />
-                                        <div style={{ display: "flex", gap: 20 }}>
-
-                                            <b onClick={() => setBirthdate(checkDate)}>Yes</b>
-                                            <b onClick={() => { setEndDate(checkDate); generateRandomDOB(minDate, checkDate) }}>{"No, it's earlier"}</b>
-                                            <b onClick={() => { setMinDate(checkDate); generateRandomDOB(checkDate, endDate) }}>{"No, it's later"}</b>
-                                        </div>
-                                        <hr />
-                                        Count of guess attempts: {attempsCount}
-                                    </div>
-                                )
-                            }
+                                <b onClick={() => setBirthdate(checkDate)}>Yes</b>
+                                <b onClick={() => { setEndDate(checkDate); generateRandomDOB(minDate, checkDate) }}>{"No, it's earlier"}</b>
+                                <b onClick={() => { setMinDate(checkDate); generateRandomDOB(checkDate, endDate) }}>{"No, it's later"}</b>
+                            </div>
+                            <hr />
+                            Count of guess attempts: {attempsCount}
                         </div>
-                    </Skeleton>
-
-                </div>
-            </main>
-        </div>
+                    )
+                }
+            </>
+        </DemoContainer>
     );
 }

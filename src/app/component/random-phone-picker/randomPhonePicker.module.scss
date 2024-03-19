@@ -1,42 +1,35 @@
-.container {
-    height: calc(100vh - 50px);
+.inputContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 5px;
 
-    .inputContainer {
+    .input {
+        border: 1px solid #e5e5ea;
+        height: 36px;
         display: flex;
-        gap: 5px;
+        align-items: center;
+        padding-inline: 8px;
+        border-radius: 7px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        width: 100%;
 
-        .input {
-            border: 1px solid #e5e5ea;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            padding-inline: 8px;
-            border-radius: 7px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            width: 100%;
-
-            img {
-                width: 32px;
-            }
+        img {
+            width: 32px;
         }
+    }
 
-        .randomButton{
-            background-color: #fff;
-            border: 1px solid #ccc;
-            height: 36px;
-            width: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            box-sizing: border-box;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+    .randomButton {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        height: 36px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
     }
 }

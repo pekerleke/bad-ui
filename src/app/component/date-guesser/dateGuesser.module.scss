@@ -1,16 +1,9 @@
-.container {
-    height: calc(100vh - 50px);
+.input {
+    border: 1px solid #e5e5ea;
+    height: 36px;
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    .input {
-        border: 1px solid #e5e5ea;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        padding-inline: 8px;
-        border-radius: 7px;
-        margin-bottom: 10px;
-    }
+    padding-inline: 8px;
+    border-radius: 7px;
+    margin-bottom: 10px;
 }

@@ -1,58 +1,51 @@
-.container {
-    height: calc(100vh - 50px);
+.input {
+    border: 1px solid #e5e5ea;
+    height: 36px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding-inline: 8px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
 
-    .input {
-        border: 1px solid #e5e5ea;
+.actionContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-bottom: 10px;
+
+    .action,
+    .display {
+        display: flex;
         height: 36px;
-        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 6px;
+        justify-content: center;
         align-items: center;
-        padding-inline: 8px;
-        border-radius: 7px;
-        margin-bottom: 10px;
-    }
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        background-color: #f7f7fa;
 
-    .actionContainer {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        margin-bottom: 10px;
-
-        .action,
-        .display {
-            display: flex;
-            height: 36px;
-            box-sizing: border-box;
-            width: 100%;
-            border-radius: 6px;
-            justify-content: center;
-            align-items: center;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            background-color: #f7f7fa;
-
-            &.left {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                background-color: #ededed;
-            }
-
-            &.rigth {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                background-color: #ededed;
-            }
+        &.left {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #ededed;
         }
 
-        .display {
-            border-radius: 0;
+        &.rigth {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            background-color: #ededed;
         }
     }
 
-    .buttonContainer {
-        display: flex;
-        gap: 10px;
+    .display {
+        border-radius: 0;
     }
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
 }

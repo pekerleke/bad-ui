@@ -7,6 +7,7 @@ export default function Home() {
             <Link href="/component/keyless">Keyless input</Link>
             <Link href="/component/date-guesser">Date guesser</Link>
             <Link href="/component/random-phone-picker">World phone picker</Link>
+            <Link href="/component/gender-picker">Gender picker</Link>
         </main>
     );
 }

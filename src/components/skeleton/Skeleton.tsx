@@ -1,6 +1,6 @@
 import styles from './skeleton.module.scss';
 
-export const Skeleton = ({ children }: {children: JSX.Element | JSX.Element[]}) => {
+export const Skeleton = ({ children }: {children: JSX.Element | JSX.Element[] | string}) => {
   return (
     <div className={styles.container}>
       <div className={styles.skeleton}>

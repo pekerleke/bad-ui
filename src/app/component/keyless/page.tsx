@@ -1,10 +1,10 @@
 'use client'
 
+import { useRef, useState } from "react";
 import classNames from "classnames";
-import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Button } from "rsuite";
-import { Skeleton } from "@/components/skeleton/Skeleton";
+import { DemoContainer } from "@/components/demo-container/DemoContainer";
 
 import styles from "./keyless.module.scss";
 
@@ -65,50 +65,43 @@ const Keyless = () => {
     }
 
     return (
-        <div>
-            <main className={styles.container}>
-                <div style={{ width: 300 }}>
+        <DemoContainer>
+            <>
+                <label htmlFor="">Name</label> <br />
+                <div className={styles.input}>{textValue || "Enter your name"}</div>
+                <div className={styles.actionContainer}>
+                    <div
+                        onMouseDown={handlePreviousCounter}
+                        onMouseUp={stopCounter}
+                        onMouseLeave={stopCounter}
+                        onTouchStart={handlePreviousCounter}
+                        onTouchEnd={stopCounter}
+                        className={classNames(styles.action, styles.left)}
+                        onClick={handlePrevioustKey}
+                    >
+                        <FaChevronLeft />
+                    </div>
 
-                    <Skeleton>
-                        <div>
-                            <label htmlFor="">Name</label> <br />
-                            <div className={styles.input}>{textValue || "Enter your name"}</div>
-                            <div className={styles.actionContainer}>
-                                <div
-                                    onMouseDown={handlePreviousCounter}
-                                    onMouseUp={stopCounter}
-                                    onMouseLeave={stopCounter}
-                                    onTouchStart={handlePreviousCounter}
-                                    onTouchEnd={stopCounter}
-                                    className={classNames(styles.action, styles.left)}
-                                    onClick={handlePrevioustKey}
-                                >
-                                    <FaChevronLeft />
-                                </div>
+                    <div className={styles.display}>{keys[keyIndex]}</div>
 
-                                <div className={styles.display}>{keys[keyIndex]}</div>
-
-                                <div
-                                    onMouseDown={handleNextCounter}
-                                    onMouseUp={stopCounter}
-                                    onMouseLeave={stopCounter}
-                                    onTouchStart={handleNextCounter}
-                                    onTouchEnd={stopCounter}
-                                    className={classNames(styles.action, styles.rigth)}
-                                    onClick={handleNextKey}
-                                >
-                                    <FaChevronRight />
-                                </div>
-                            </div>
-                            <div className={styles.buttonContainer}>
-                                <Button appearance="primary" onClick={handleSubmit}>Enter key</Button>
-                                <Button onClick={handleReset}>Reset</Button>
-                            </div>
-                        </div>
-                    </Skeleton>
+                    <div
+                        onMouseDown={handleNextCounter}
+                        onMouseUp={stopCounter}
+                        onMouseLeave={stopCounter}
+                        onTouchStart={handleNextCounter}
+                        onTouchEnd={stopCounter}
+                        className={classNames(styles.action, styles.rigth)}
+                        onClick={handleNextKey}
+                    >
+                        <FaChevronRight />
+                    </div>
                 </div>
-            </main>
-        </div>
+                <div className={styles.buttonContainer}>
+                    <Button appearance="primary" onClick={handleSubmit}>Enter key</Button>
+                    <Button onClick={handleReset}>Reset</Button>
+                </div>
+            </>
+        </DemoContainer>
     );
 }
 
